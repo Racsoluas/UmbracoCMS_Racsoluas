@@ -1,0 +1,29 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+    var content = (ContentModels.PartnersSection)Model.Content;
+    var partners = content.PartnerList; // BlockListModel
+}
+
+@if (partners != null && partners.Any())
+{
+    <section class="py-8">
+        <div class="flex flex-wrap justify-center gap-4 ">
+            @foreach (var block in partners)
+            {
+                var partnerContent = (ContentModels.Partners)block.Content;
+                var img = partnerContent.PartnerImage;
+
+                if (img != null)
+                {
+                    <div class="w-1/8 flex justify-center">
+                        <img src="@img.Url()"
+                             alt="@img.Name"
+                             class="max-h-20 object-contain" />
+                    </div>
+                }
+            }
+        </div>
+    </section>
+}
