@@ -54,8 +54,8 @@ body {
     @apply mb-3;
 }
 
-img {
-    @apply w-full h-auto object-cover;
+!img {
+    @apply w-auto h-auto object-cover;
 }
 
    
