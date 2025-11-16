@@ -123,3 +123,7 @@ body {
     .text-bronze-3-clr {
         color: #D9C3A9;
     }
+
+.contact-form-wrapper {
+    @apply max-w-[1170px] mx-auto shadow-lg p-[3rem];
+}

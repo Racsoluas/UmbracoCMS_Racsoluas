@@ -1,0 +1,12 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+    var content = (ContentModels.MapSection)Model.Content;
+}
+
+<section class="map-section relative z-[1]">
+    <div>
+        <img src="@content.MapImage.Url()" alt="Location detail whereabout">
+    </div>
+</section>
