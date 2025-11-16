@@ -23,4 +23,5 @@ public class CallbackFormViewModel
 
     [BindNever]
     public IEnumerable<string> Options { get; set; } = [];
-}
+    public bool IsContactPage { get; set; }
+    }

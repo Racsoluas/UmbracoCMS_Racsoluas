@@ -45,7 +45,21 @@
         </div>
 
         <div class="pb-[2.5rem]">
-            <button type="submit" class="form-btn">Submit</button>
+            @if (Model.IsContactPage)
+            {
+                <!-- Contact-sidan: mörk knapp med vit text -->
+                <button type="submit"
+                        class="w-full bg-gray-900 text-white py-3 rounded-md font-semibold hover:bg-gray-800 transition">
+                    Submit
+                </button>
+            }
+            else
+            {
+                <!-- Home: behåll originallayouten -->
+                <button type="submit" class="form-btn">
+                    Submit
+                </button>
+            }
         </div>
 
     </div>

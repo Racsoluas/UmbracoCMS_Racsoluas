@@ -1,0 +1,59 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@{
+    var content = (ContentModels.ContactSection)Model.Content;
+    var sectionImage = content.ContactUsImage;
+    var sectionTitle = content.ContactUsTitle;
+    var sectionLocation = content.ContactUsLocation;
+    var sectionPhone = content.ContactUsPhone;
+    var sectionEmail = content.ContactUsEmail;
+    var rootContent = Umbraco.ContentAtRoot();
+    var siteSettings = rootContent.OfType<SiteSettings>().FirstOrDefault();
+
+    var contactAdress = siteSettings?.ContactAddress ?? "Ingen adress angiven";
+    var contactEmail = siteSettings?.ContactEmail ?? "no email provided";
+    var contactPhone = siteSettings?.ContactPhone ?? "someone please call 911";
+}
+
+<section class="relative overflow-hidden pt-5">
+    <div class="relative z-10 mx-auto max-w-7xl flex flex-col lg:flex-row items-center gap-12 lg:gap-24 px-4">
+        <div class="w-full w-[50%] flex justify-center ">
+            <div>
+                <img class="w-full max-w-[480px] object-contain" src="@(sectionImage != null ? sectionImage.Url() : Url.Content("~/wwwroot/images/Dot-Net-User.png"))" alt="Contact Person" />
+            </div>
+
+
+            <div class="w-full space-y-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 leading-tight mb-8">@sectionTitle</h2>
+                <div class="w-full space-y-6">
+                    <div class="flex items-start gap-3">
+                        <div> <i class="fa-solid fa-location-dot text-[var(--color-secondary)] text-lg mt-1"></i></div>
+                        <div>
+                            <p class="text-body-text">@sectionLocation</p>
+                            <p>@contactAdress</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div> <i class="fa-solid fa-phone text-lg mt-1 text-[var(--color-secondary)]"></i></div>
+                        <div>
+                            <p class="text-body-text">@sectionPhone</p>
+                            <a href="tel:@contactPhone.Replace(" ", "")">@contactPhone</a>
+                        </div>
+                    </div>
+
+
+                    <div class="flex items-start gap-3">
+                        <div>
+                            <i class="fa-solid fa-envelope text-lg mt-1 text-[var(--color-secondary)]"></i>
+                        </div>
+                        <div>
+                            <p class="text-body-text">@sectionEmail</p>
+                            <a href="mailto:@contactEmail">@contactEmail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
