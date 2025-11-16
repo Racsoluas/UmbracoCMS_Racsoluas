@@ -1,0 +1,16 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+    var rootContent = Umbraco.ContentAtRoot();
+    var siteSettings = rootContent.OfType<SiteSettings>().FirstOrDefault();
+
+    var footerText = siteSettings?.FooterText ?? "© Onatrix. All Rights Reserved. Credits to ";
+}
+
+<footer class="mx-auto">
+    <div class="bg-[var(--color-dark)] mx-auto px-2 flex-start ">
+        <div class="max-w-7xl mx-auto text-center justify-start flex flex-row flex-wrap">
+            <p class="text-xs px-1 py-3 text-[var(--color-primary)]">@footerText</p><a href="/" class="text-xs text-center text-[var(--color-secondary)] py-3">Themesflat</a>
+        </div>
+    </div>
+</footer>
