@@ -22,7 +22,6 @@
 
   <ItemGroup>
     <Folder Include="App_Plugins\OnatrixRte\" />
-    <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
